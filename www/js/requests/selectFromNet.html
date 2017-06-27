@@ -1,0 +1,39 @@
+
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Select contact</h3>
+    </div>
+    <div class="modal-body" id="modal-body">        
+    <div >
+   <!--  <uib-accordion>
+        <div uib-accordion-group class="panel-default" heading='te' ng-repeat=" item in vm.contacts">
+            <ul>
+                <li ng-repeat="p in  item ">
+                    <input type="checkbox" ng-model="p.selected">
+                    <p>{{p.name}}</p>
+                </li>
+            </ul>
+        </div>
+    </uib-accordion> -->
+      <ion-list>
+        <div ng-repeat="item in $ctrl.allContatcts">
+          <ion-item class="item-stable"
+                    ng-click="$ctrl.toggleGroup(group)"
+                    ng-class="{active: $ctrl.isGroupShown(group)}">
+              <i class="icon" ng-class="$ctrl.isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+            {{item.title}}
+          </ion-item>
+          <ion-item class="item-accordion"
+                    ng-repeat="p in item.contacts"
+                    ng-show="$ctrl.isGroupShown(group)">
+                    <input type="checkbox" ng-model="p.selected">
+                    <p>{{p.name}}</p>
+          </ion-item>
+        </div>
+      </ion-list>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="$ctrl.saveAnswer()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
+    </div>
+

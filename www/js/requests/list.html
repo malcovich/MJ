@@ -1,0 +1,55 @@
+<ion-view view-title="Requests">
+  <ion-content>
+   <ion-tabs tabs-type="tabs-icon-only">
+        <ion-tab title="My requests">
+            <ion-content has-header="true" padding="true">
+            	<div class="list-requests">
+	                <h2 class="request-list-title">My requests</h2>
+	   				<i class="icon ion-plus-circled add-new-request" ng-click="$ctrl.showModal()"></i>
+					<div ng-repeat="req in $ctrl.requestsList" class="my-request">
+						<h3 ui-sref="app.request({reqId: req._id})">{{req.text}}</h3>
+						<span class="date-request"><i class="glyphicon glyphicon-calendar"></i>{{req.requestDate | date}}</span>
+						<span ng-click="$ctrl.deleteRequest(req._id)">delete</span>
+						<span ng-click="$ctrl.change(req)">Редактировать</span>
+					</div>
+				</div>
+            </ion-content>
+        </ion-tab>
+
+        <ion-tab title="Friend`s request">
+            <ion-content has-header="true" padding="true">
+            	<div class="list-requests">
+	                <h2 class="request-list-title">Friend`s request</h2>
+	                <div ng-repeat="req in $ctrl.friendsRequestsList" class="friends-request">
+	                	<div class="req-user-info">
+	                		<span class="btn green-btn req-add-answer" ui-sref="app.request({reqId: req._id})">Ответить</span>
+	                		<div class="req-user-img">
+	                			<img ng-src="http://172.18.2.117:3000/{{req.userId.img}}">
+	                		</div>
+	                		<div class="req-user-main-info">
+	                			<p class="req-user-name">{{req.userId.name}}</p>
+	                			<p>{{req.requestDate | date}}</p>
+	                		</div>
+	                	</div> 
+						<p class="req-text">{{req.text}}</p>
+					</div>
+				</div>
+            </ion-content>
+        </ion-tab>
+    </ion-tabs>
+ </ion-content>
+</ion-view>
+
+<!-- <script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Отредактируйте ваш запрос</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+      <textarea class="text-area" ng-model="vm.request.text">{{vm.request.text}}</textarea>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancel</button>
+    </div>
+</script>
+ -->

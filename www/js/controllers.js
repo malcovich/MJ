@@ -1,23 +1,86 @@
 angular.module('starter.controllers', [])
-
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+ .service("ContactsService", ['$q', function($q) {
+    var formatContact = function(contact) {
+      return {
+        "displayName"   : contact.name.formatted || contact.name.givenName + " " + contact.name.familyName || "Mystery Person",
+        "emails"        : contact.emails || [],
+        "phones"        : contact.phoneNumbers || [],
+        "photos"        : contact.photos || []
+      };
+    };
+    var pickContact = function() {
+      var deferred = $q.defer();
+      if(navigator && navigator.contacts) {
+          navigator.contacts.find(function(contact){
+              deferred.resolve( formatContact(contact) );
+          });
+      } else {
+        deferred.reject("Bummer.  No contacts in desktop browser");
+      }
+      return deferred.promise;
+    };
+    return {
+      pickContact : pickContact
+    };
+  }])
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $localStorage,AuthFactory, $state, $cordovaContacts, $ionicPlatform,ContactsService) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
-  //});
+  //})
 
   // Form data for the login modal
   $scope.loginData = {};
+  console.log($state,$localStorage.token)
+  if ($localStorage.token == undefined){
+    console.log('sdfsf')
+    $state.go('login')
+   /* $ionicModal.fromTemplateUrl('templates/auth.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.modal = modal;
+      $scope.modal.show();
+    });*/
+  }else {
+    $scope.token = $localStorage.token;
+    AuthFactory.me().then(function(user){
+      $scope.user = user.data.data;
+    })
+  }
 
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
+  $scope.pickContact = function() {
+    ContactsService.pickContact().then(
+        function(contact) {
+            $scope.data.selectedContacts.push(contact);
+            console.log("Selected contacts=");
+            console.log($scope.data.selectedContacts);
+        },
+        function(failure) {
+            $scope.error = failure
+            console.log("Bummer.  Failed to pick a contact", failure);
+        }
+    );
+  }
+
+  $ionicPlatform.ready(function() {
+     window.plugins.sim.getSimInfo(successCallback, errorCallback);
+      function successCallback(result) {
+        console.log(result);
+        $scope.phoneNumber = result.phoneNumber;
+      }
+      function errorCallback(error) {
+        console.log(error);
+      }
+      $scope.getAllContacts = function() {
+            $cordovaContacts.find({filter : 'me', fields:  [ 'displayName']}).then(function(allContacts) { //replace 'Robert' with '' if you want to return all contacts with .find()
+                $scope.contacts = allContacts;
+                console.log(JSON.stringify(allContacts));
+            });
+        };
+  })
 
   // Triggered in the login modal to close it
   $scope.closeLogin = function() {
@@ -29,28 +92,22 @@ angular.module('starter.controllers', [])
     $scope.modal.show();
   };
 
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
+  $scope.logOut = function() {
+    AuthFactory.logout()
+    $state.go('login');
   };
-})
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
+  // Perform the login action when the user submits the login form
+  // $scope.doLogin = function() {
+  //   console.log('do')
+  //   AuthFactory.signin( $scope.loginData).then(function(res){
+  //     if (res.data.type == false) {
+  //         alert(res.data)    
+  //     } else {
+  //         $localStorage.token = res.data.token;
+  //         $state.go("app.main");    
+  //         $scope.modal.hide();
+  //     }
+  //   })
+  // };
 })
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});

@@ -1,0 +1,19 @@
+<ion-modal-view>
+  <ion-content>
+  <h4>Ваши друзья уже используют Profee</h4>
+   <div  ng-repeat="friend in resFriends"  class="friend-item">
+		<div style="float:right">
+			<span class="btn green-btn">Добавить</span>
+		</div>
+	   	<div class="friend-avatar">
+		  <img ng-src="http://172.18.2.117:5000/{{friend.img}}">
+	   	</div>
+		<div class="friend-info">
+		    <h3>
+		      {{friend.name || friend.email}}
+		    </h3>
+		</div>
+	</div>
+	<span ui-sref="app.main">Skip</span>
+  </ion-content>
+</ion-modal-view>

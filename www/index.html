@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; font-src data: *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+
     <title></title>
 
     <link rel="manifest" href="manifest.json">
@@ -27,11 +29,26 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
+    <script src="js/ng-cordova.min.js"></script>
+
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/login/login.controller.js"></script>
+    <script src="js/login/confirme.controller.js"></script>
+    <script src="js/login/usercontacts.controller.js"></script>
+    <script src="js/common/services/auth-service.js"></script>
+    <script src="js/common/services/modal-service.js"></script>
+    <script src="js/friends/friend-list.controller.js"></script>
+    <script src="js/friends/friend.controller.js"></script>
+    <script src="js/contacts/contact-details.controller.js"></script>
+    <script src="js/contacts/contacts-list.controller.js"></script>
+    <script src="js/requests/requests-controller.js"></script>
+    <script src="js/requests/request.controller.js"></script>
+    <script src="js/main/main.controller.js"></script>
   </head>
 
   <body ng-app="starter">

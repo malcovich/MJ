@@ -1,0 +1,53 @@
+<ion-view view-title="Request">
+  <ion-content>
+<div class="inner-block">
+	<div class="request-block">
+		<div class="request-header">
+            <div  class="req-user-img">
+                <img ng-src="http://172.18.2.117:3000/{{$ctrl.request.userId.img}}" alt="">
+            </div>
+            <div class="request-autor-info">
+                <h4>{{$ctrl.request.userId.name}}</h4>
+                <p>{{$ctrl.request.requestDate | date}}</p>
+            </div>
+		</div>
+		<div class="request-body">
+            <p class="request-text">{{$ctrl.request.text}}</p>
+            <div ng-hide="$ctrl.request.userId == $ctrl.user._id">
+                <p class="titleForContacs" ng-show="$ctrl.selectedContacts.length > 0">Вы предложили {{$ctrl.selectedContacts.length}} контакта:</p>
+                <div ng-hide="$ctrl.selectedContacts.length > 0" class="anser-btns">
+        			<span ng-click="$ctrl.openModalfromNet()" class="green-btn btn-small">Выбрать из сети</span>
+        			<span class="green-btn btn-small">Предложить новый контакт</span>
+                </div>
+                <div>
+                    <p ng-click="$ctrl.openModalfromNet()" ng-show="$ctrl.selectedContacts.length > 0">Редактировать</p>
+                    <div class="my-answer">
+                        <ul class="contact-list">
+                            <li ng-repeat="contact in $ctrl.selectedContacts" class="contact-card">
+                              <div class="header-card">
+                                  <div class="image-block">
+                                    <img  ng-src="http://172.18.2.117:3000/{{contact.img}}" ">
+                                  </div>
+                                  <div class="card-title">
+                                    <h5 class="contact-name">{{contact.name}}</h5>
+                                    <p class="contact-spec">{{contact.spec}}</p>
+                                  </div>
+                              </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="$ctrl.request.userId == $ctrl.user._id">
+                <div ng-repeat="answer in $ctrl.allAnswers">
+                    <div ng-repeat="contact in answer.contacts">
+                        {{contact.name}}
+                    </div>
+                </div>
+            </div>
+		</div>
+        
+	</div>
+</div>
+ </ion-content>
+</ion-view>

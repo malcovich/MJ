@@ -21,5 +21,11 @@
         </label>
       </div>
     </form>
+    <buttion ng-click="getAllContacts()" class="button button-block button-positive">sd</buttion>
+   {{phoneNumber}}
+    <div ng-repeat="contact in contacts">
+      {{contact}}
+      {{contact.displayName}}
+    </div>
   </ion-content>
 </ion-modal-view>

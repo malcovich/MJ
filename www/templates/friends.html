@@ -1,0 +1,16 @@
+<ion-view view-title="Друзья">
+  <ion-content>
+	<div class="inner-block">
+	    <div  ng-repeat="friend in $ctrl.friendsList" ui-sref="app.friend({id : friend._id})" class="friend-item">
+	   	<div class="friend-avatar">
+		  <img ng-src="http://172.18.2.117:3000/{{friend.img}}">
+	   	</div>
+		  <div class="friend-info">
+		    <h3>
+		      {{friend.name || friend.email}}
+		    </h3>
+		  </div>
+		</div>
+	</div>
+  </ion-content>
+</ion-view>

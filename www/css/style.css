@@ -1,1 +1,225 @@
 /* Empty. Add your own CSS if you like */
+
+.menu {
+	background-color: #222c3c;
+}
+.list, .item.item-complex .item-content {
+	background-color: #222c3c;
+	color:#ffffff;
+}
+.menu .list{
+	padding-top: 16px;
+}
+.item {
+	border-width: 0px;
+}
+
+.menu .bar.bar-stable {
+	height: 150px;
+	background-color: #222c3c;
+	color:#ffffff;
+	border-color: #313d4f
+}
+.menu .bar.bar-stable .title {
+	color: #299df5;
+	height: 149px;
+}
+.platform-android .menu .bar .title {
+	font-size: 21px;
+	line-height: 49px;
+}
+.menu .has-header {
+	top: 150px;
+}
+.has-header {
+	top: 55px;
+}
+.user-avatar {
+	width: 100px;
+	margin: 5px 88px 10px 88px;
+	height: 100px;
+	border-radius: 50%;
+	overflow: hidden;
+	background-color:  #fff;
+}
+.user-avatar img {
+	width: 100%;
+}
+.user-name {
+	text-align:center;
+	color: #fff;
+	font-size: 18px;
+}
+.bar.bar-stable .title {
+	color:#354052;
+}
+.bar.bar-stable {
+	height: 55px;
+	background-color: #fff;
+}
+.bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before, .bar button.button-icon .icon:before, .bar button.button-icon:before, .bar button.button-icon.icon-left:before, .bar button.button-icon.icon-right:before{
+	font-size: 40px;
+	line-height: 40px;
+	color:#354052;
+}
+.bar.bar-stable .title {
+	line-height: 55px;
+	text-align: center;
+	margin-left: -40px;
+}
+.pane {
+	background: #EFF3F6;
+}
+.friend-avatar {
+	width: 75px;
+	height: 75px;
+	overflow: hidden;
+	float:left;
+	border-radius: 50%;
+	margin-right: 20px;
+	background-color:#fff;
+	border: 4px solid #EFF3F6;
+}
+.friend-avatar img{
+	width: 100%;
+
+}
+.friend-item{
+	padding: 5px 15px 5px 15px;
+	overflow: hidden;
+	border-bottom: 1px solid #dfe2e5;
+	margin: 10px 10px 0 10px;
+	background-color:#fff;
+}
+.friend-info {
+	float:left;
+}
+.friend-info h3 {
+	line-height: 75px;
+	font-size: 18px;
+	margin-bottom: 0px;
+}
+.add-new-request {
+	font-size: 60px;
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	color: red;
+}
+/* .modal-wrapper {
+	background: #fff;
+	border: 1px solid #dfe2e5;
+	top: 25%;
+	position: absolute;
+	width: 90%;
+	left: 5%;
+	padding: 20px;
+	z-index: 10;
+}
+.modal-backdrop-bg {
+	background: rgba(0,0,0,0.6)
+} */
+.btn {
+	padding-left: 22px;
+	padding-right: 22px;
+	line-height: 36px;
+	font-size: 18px;
+	display: inline-block;
+	background-color: #dbdbdb;
+	border: 0;
+	
+}
+.btn:hover{
+	text-decoration: none;
+}
+.green-btn {
+	background-color: #38B248;
+	color: #fff;
+	font-weight: 600;
+	&:hover{
+		color: #fff;
+	}
+}
+.green-btn:hover{
+	color: #fff;
+}
+
+.btn-small {
+	padding-left: 12px;
+	padding-right: 12px;
+	line-height: 15px;
+	display: inline-block;
+	font-size: 12px;
+}
+.btn-small:hover{
+	text-decoration: none;
+}
+.text-area {
+	width: 100%;
+	border: 1px solid #dfe2e5;
+}
+/****/
+/*.my-list-requests  {
+
+}*/
+h2.request-list-title {
+	font-size: 24px;
+	margin: 10px 0 20px 0;
+}
+.my-request {
+	padding: 10px 15px 10px 15px;
+	overflow: hidden;
+	border-bottom: 1px solid #dfe2e5;
+	margin: 10px  0 0 0;
+	background-color:#fff;
+}
+.my-request h3, .friends-request h3 {
+	font-size: 19px;
+}
+.friends-request {
+	padding: 10px 15px 10px 15px;
+	overflow: hidden;
+	border-bottom: 1px solid #dfe2e5;
+	margin: 10px  0 0 0;
+	background-color:#fff;
+}
+.req-user-img{
+	float: left;
+	width: 50px;
+	height: 50px;
+	overflow: hidden;
+	border-radius: 50%;
+	border: 4px solid #dfe2e5;
+	margin-right: 20px;
+}
+.req-user-info {
+	overflow: hidden;
+}
+.req-user-img img {
+	width: 100%;
+}
+
+.req-user-main-info {
+	float: left;
+}
+.req-user-name{
+	font-size: 18px;
+	font-weight: 600;
+	margin: 5px 0 5px 0;
+}
+.req-text{ 
+	margin-top: 15px;
+	font-size: 16px;
+ }
+ .req-add-answer {
+ 	float: right;
+ }
+ .request-block {
+ 	padding: 10px;
+ 	margin:10px;
+ 	background: #fff;
+ }
+.anser-btns .btn-small {
+	float: left;
+	margin-right: 20px;
+}
